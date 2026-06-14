@@ -3,7 +3,7 @@
         <head>
             <title>The Origins Café</title>
             <link rel="stylesheet" href="style.css">
-            <script src="script.js"></script>
+            <script src="script.js" defer></script>
         </head>
         <body>
             <div class="nav">
@@ -45,6 +45,61 @@
                     <p>
                         Not a fake brownie, a real life one!
                     </p>
+                </div>
+            </div>
+            <div class="order">
+                <h2>
+                    Order
+                </h2>
+                <div class="orderField">
+                    <div class="quantitySelector">
+                        <p>
+                            Natural Lime Milkshake
+                        </p>
+                        <button id="NLMminus">
+                            -
+                        </button>
+                        <input id="NLMquant" type="number" value="0" min="0">
+                        <button id="NLMplus">
+                            +
+                        </button>
+                    </div>
+                    <div class="quantitySelector">
+                        <p>
+                            Zero Burger
+                        </p>
+                        <button id="ZBminus">
+                            -
+                        </button>
+                        <input id="ZBquant" type="number" value="0" min="0">
+                        <button id="ZBplus">
+                            +
+                        </button>
+                    </div>
+                    <div class="quantitySelector">
+                        <p>
+                            Only Fries
+                        </p>
+                        <button id="OFminus">
+                            -
+                        </button>
+                        <input id="OFquant" type="number" value="0" min="0">
+                        <button id="OFplus">
+                            +
+                        </button>
+                    </div>
+                    <div class="quantitySelector">
+                        <p>
+                            Real Life Brownie
+                        </p>
+                        <button id="RLBminus">
+                            -
+                        </button>
+                        <input id="RLBquant" type="number" value="0" min="0">
+                        <button id="RLBplus">
+                            +
+                        </button>
+                    </div>
                 </div>
             </div>
         </body>
