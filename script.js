@@ -20,7 +20,7 @@ const RLBquant = document.getElementById("NLMquant");
 const RLBplus = document.getElementById("NLMplus");
 
 NLMminus.addEventListener("click", function() {
-    if (NLMquantityA > 0) {
+    if (NLMquantity > 0) {
         NLMquantity = NLMquantity - 1;
         NLMquant.value = NLMquantity;
     }
@@ -65,5 +65,22 @@ RLBminus.addEventListener("click", function() {
 RLBplus.addEventListener("click", function() {
     RLBquantity = RLBquantity + 1;
     RLBquant.value = RLBquantity;
+});
+
+function fix(input) {
+    let value = Number(input.value);
+
+    if (value < 0 || isNaN(value)) {
+        value = 0;
+    }
+
+    input.value = value;
+    return vlaue;
+};
+
+NLMquant.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        NLMquantity = fix(NLMquant);
+    }
 });
 
