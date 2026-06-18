@@ -7,17 +7,17 @@ const NLMminus = document.getElementById("NLMminus");
 const NLMquant = document.getElementById("NLMquant");
 const NLMplus = document.getElementById("NLMplus");
 
-const ZBminus = document.getElementById("NLMminus");
-const ZBquant = document.getElementById("NLMquant");
-const ZBplus = document.getElementById("NLMplus");
+const ZBminus = document.getElementById("ZBminus");
+const ZBquant = document.getElementById("ZBquant");
+const ZBplus = document.getElementById("ZBplus");
 
-const OFminus = document.getElementById("NLMminus");
-const OFquant = document.getElementById("NLMquant");
-const OFplus = document.getElementById("NLMplus");
+const OFminus = document.getElementById("OFminus");
+const OFquant = document.getElementById("OFquant");
+const OFplus = document.getElementById("OFplus");
 
-const RLBminus = document.getElementById("NLMminus");
-const RLBquant = document.getElementById("NLMquant");
-const RLBplus = document.getElementById("NLMplus");
+const RLBminus = document.getElementById("RLBminus");
+const RLBquant = document.getElementById("RLBquant");
+const RLBplus = document.getElementById("RLBplus");
 
 NLMminus.addEventListener("click", function() {
     if (NLMquantity > 0) {
@@ -67,20 +67,38 @@ RLBplus.addEventListener("click", function() {
     RLBquant.value = RLBquantity;
 });
 
-function fix(input) {
-    let value = Number(input.value);
+NLMquant.addEventListener("change", function() {
+    NLMquantity = Number(NLMquant.value);
 
-    if (value < 0 || isNaN(value)) {
-        value = 0;
-    }
-
-    input.value = value;
-    return vlaue;
-};
-
-NLMquant.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        NLMquantity = fix(NLMquant);
+    if (NLMquantity < 0) {
+        NLMquantity = 0;
+        NLMquant.value = 0;
     }
 });
 
+ZBquant.addEventListener("change", function() {
+    ZBquantity = Number(ZBquant.value);
+
+    if (ZBquantity < 0) {
+        ZBquantity = 0;
+        ZBquant.value = 0;
+    }
+});
+
+OFquant.addEventListener("change", function() {
+    OFquantity = Number(OFquant.value);
+
+    if (OFquantity < 0) {
+        OFquantity = 0;
+        OFquant.value = 0;
+    }
+});
+
+RLBquant.addEventListener("change", function() {
+    RLBquantity = Number(RLBquant.value);
+
+    if (RLBquantity < 0) {
+        RLBquantity = 0;
+        RLBquant.value = 0;
+    }
+});
