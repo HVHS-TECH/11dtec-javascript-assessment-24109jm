@@ -3,9 +3,9 @@ let ZBquantity = 0;
 let OFquantity = 0;
 let RLBquantity = 0;
 let NLMprice = 2.49;
-let ZBprice = 2.49;
-let OFprice = 2.49;
-let RLBprice = 2.49;
+let ZBprice = 8.49;
+let OFprice = 4.49;
+let RLBprice = 1.99;
 
 const NLMminus = document.getElementById("NLMminus");
 const NLMquant = document.getElementById("NLMquant");
@@ -104,28 +104,41 @@ RLBquant.addEventListener("change", function() {
     if (RLBquantity < 0) {
         RLBquantity = 0;
         RLBquant.value = 0;
-    }
+    } 
 });
+
+function buy() {
+    const OUTPUT = document.getElementById("orderScreen");
+    OUTPUT.innerHTML += "<h3>Please enter your details:</h3>";
+
+}
 
 function order() {
     const OUTPUT = document.getElementById("orderScreen");
     OUTPUT.innerHTML = "<h3>Ready to buy?</h3>"; 
     if (NLMquantity === 1) {
-        OUTPUT.innerHTML += "<p>1x Natural Lime Milkshake ($"+ NLMprice * NLMquantity +")</p>"; 
+        OUTPUT.innerHTML += "<p>1x Natural Lime Milkshake ($"+ (NLMprice * NLMquantity).toFixed(2) +")</p>"; 
     } else if (NLMquantity > 1) {
-        OUTPUT.innerHTML += "<p>"+ NLMquantity +"x Natural Lime Milkshakes ($"+ NLMprice * NLMquantity +")</p>";
+        OUTPUT.innerHTML += "<p>"+ NLMquantity +"x Natural Lime Milkshakes ($"+ (NLMprice * NLMquantity).toFixed(2) +")</p>";
     };
     if (ZBquantity === 1) {
-        OUTPUT.innerHTML += "<p>1x Zero Burger ($"+ ZBprice * ZBquantity +")</p>"; 
+        OUTPUT.innerHTML += "<p>1x Zero Burger ($"+ (ZBprice * ZBquantity).toFixed(2) +")</p>"; 
     } else if (ZBquantity > 1) {
-        OUTPUT.innerHTML += "<p>"+ ZBquantity +"x Zero Burgers ($"+ ZBprice * ZBquantity +")</p>";
+        OUTPUT.innerHTML += "<p>"+ ZBquantity +"x Zero Burgers ($"+ (ZBprice * ZBquantity).toFixed(2) +")</p>";
     };
     if (OFquantity >= 1) {
-        OUTPUT.innerHTML += "<p>"+ OFquantity +"x Only Fries ($"+ OFprice * OFquantity +")</p>"; 
+        OUTPUT.innerHTML += "<p>"+ OFquantity +"x Only Fries ($"+ (OFprice * OFquantity).toFixed(2) +")</p>"; 
     };
     if (RLBquantity === 1) {
-        OUTPUT.innerHTML += "<p>1x Real Life Brownie ($"+ RLBprice * RLBquantity +")</p>"; 
+        OUTPUT.innerHTML += "<p>1x Real Life Brownie ($"+ (RLBprice * RLBquantity).toFixed(2) +")</p>"; 
     } else if (RLBquantity > 1) {
-        OUTPUT.innerHTML += "<p>"+ RLBquantity +"x Real Life Brownies ($"+ RLBprice * RLBquantity +")</p>";
+        OUTPUT.innerHTML += "<p>"+ RLBquantity +"x Real Life Brownies ($"+ (RLBprice * RLBquantity).toFixed(2) +")</p>";
     };
-}
+    if (NLMquantity === 0 && ZBquantity === 0 && OFquantity === 0 && RLBquantity === 0) {
+        OUTPUT.innerHTML += "<p>Please add to your order before attempting to purchase.</p>";
+    } else {
+        OUTPUT.innerHTML += "<p>Total: $"+ ((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2) +"";
+        OUTPUT.innerHTML += '<button onClick="buy()">Buy</button>';
+    };
+};
+
