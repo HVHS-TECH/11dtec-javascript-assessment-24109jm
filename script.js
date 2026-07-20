@@ -2,10 +2,10 @@ let NLMquantity = 0;
 let ZBquantity = 0;
 let OFquantity = 0;
 let RLBquantity = 0;
-let NLMprice = 2.49;
-let ZBprice = 8.49;
-let OFprice = 4.49;
-let RLBprice = 1.99;
+let NLMprice = 2.36;
+let ZBprice = 9.44;
+let OFprice = 4.72;
+let RLBprice = 2.36;
 
 const NLMminus = document.getElementById("NLMminus");
 const NLMquant = document.getElementById("NLMquant");
@@ -22,6 +22,8 @@ const OFplus = document.getElementById("OFplus");
 const RLBminus = document.getElementById("RLBminus");
 const RLBquant = document.getElementById("RLBquant");
 const RLBplus = document.getElementById("RLBplus");
+
+const orderID = Math.floor(Math.random() * 100000000).toString().padStart(8, '0');
 
 NLMminus.addEventListener("click", function() {
     if (NLMquantity > 0) {
@@ -107,10 +109,15 @@ RLBquant.addEventListener("change", function() {
     } 
 });
 
+function receipt() {
+    const OUTPUT = document.getElementById("orderScreen");
+    OUTPUT.innerHTML += "<h3>Receipt</h3></br><p>Order ID: "+ orderID +"</br><p>Name: "+ formName +"</p>";
+}
+
 function buy() {
     const OUTPUT = document.getElementById("orderScreen");
     OUTPUT.innerHTML += "<h3>Please enter your details:</h3>";
-
+    OUTPUT.innerHTML += "<form onsubmit='return false;'><label for='formName'>Name: </label><input type='text' id='nameField' placeholder='Eg. Fred McKenzie'></br><label for='formMoney'>Ballence: $</label><input type='number' id='moneyField' placeholder='Eg. 236'></br><input type ='submit' onClick=receipt()></br></form>";
 }
 
 function order() {
