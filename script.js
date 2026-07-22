@@ -7,6 +7,8 @@ let ZBprice = 9.44;
 let OFprice = 4.72;
 let RLBprice = 2.36;
 
+let messages = ["Have a good afternoon", "Enjoy your meal", "Bon Appetit", "Thank you for ordering from us", "We appreciate your support", "Have a great rest of your day", "Savor every bite!", "You made our day", "Come back soon!", "It's a pleasure serving you"]
+
 const NLMminus = document.getElementById("NLMminus");
 const NLMquant = document.getElementById("NLMquant");
 const NLMplus = document.getElementById("NLMplus");
@@ -23,7 +25,8 @@ const RLBminus = document.getElementById("RLBminus");
 const RLBquant = document.getElementById("RLBquant");
 const RLBplus = document.getElementById("RLBplus");
 
-const orderID = Math.floor(Math.random() * 100000000).toString().padStart(8, '0');
+const orderID = Math.floor(Math.random() * 1000000000).toString().slice(1);
+const messageNum = orderID[0];
 
 NLMminus.addEventListener("click", function() {
     if (NLMquantity > 0) {
@@ -109,15 +112,19 @@ RLBquant.addEventListener("change", function() {
     } 
 });
 
-function receipt() {
+function receipt(_name) {
+    const NAME_FIELD = document.getElementById("nameField");
+    let name = NAME_FIELD.value;
+    const PAID_FIELD = document.getElementById("moneyField");
+    let paid = PAID_FIELD.value;
     const OUTPUT = document.getElementById("orderScreen");
-    OUTPUT.innerHTML += "<h3>Receipt</h3></br><p>Order ID: "+ orderID +"</br><p>Name: "+ formName +"</p>";
+    OUTPUT.innerHTML += "<h3>Receipt</h3><p>Order ID: #"+ orderID +"<p>Name: "+ name +"</p><p>Order Total: $"+ ((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2) +"<p>Total Paid: $"+ paid +"</p><p>Change: $"+ (((((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2)) - paid).toFixed(2)) * -1 +"</p><p>"+ (messageNum, messages) +"</p>";
 }
 
 function buy() {
     const OUTPUT = document.getElementById("orderScreen");
     OUTPUT.innerHTML += "<h3>Please enter your details:</h3>";
-    OUTPUT.innerHTML += "<form onsubmit='return false;'><label for='formName'>Name: </label><input type='text' id='nameField' placeholder='Eg. Fred McKenzie'></br><label for='formMoney'>Ballence: $</label><input type='number' id='moneyField' placeholder='Eg. 236'></br><input type ='submit' onClick=receipt()></br></form>";
+    OUTPUT.innerHTML += "<form onsubmit='return false;'><label for='formName'>Name: </label><input type='text' id='nameField' placeholder='Eg. Fred McKenzie'></br><label for='formMoney'>Paying: $</label><input type='number' id='moneyField' placeholder='Eg. 236'></br><input type ='submit' onClick=receipt()></br></form>";
 }
 
 function order() {
