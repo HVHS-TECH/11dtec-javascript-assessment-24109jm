@@ -118,12 +118,12 @@ function receipt(_name) {
     const PAID_FIELD = document.getElementById("moneyField");
     let paid = PAID_FIELD.value;
     const OUTPUT = document.getElementById("orderScreen");
-    OUTPUT.innerHTML += "<h3>Receipt</h3><p>Order ID: #"+ orderID +"<p>Name: "+ name +"</p><p>Order Total: $"+ ((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2) +"<p>Total Paid: $"+ paid +"</p><p>Change: $"+ (((((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2)) - paid).toFixed(2)) * -1 +"</p><p>"+ (messageNum, messages) +"</p>";
+    OUTPUT.innerHTML = "<h3>Receipt</h3><p>Order ID: #"+ orderID +"<p>Name: "+ name +"</p><p>Order Total: $"+ ((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2) +"<p>Total Paid: $"+ paid +"</p><p>Change: $"+ (((((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2)) - paid).toFixed(2)) * -1 +"</p><p>"+ messages[Number(messageNum)] +"</p>";
 }
 
 function buy() {
     const OUTPUT = document.getElementById("orderScreen");
-    OUTPUT.innerHTML += "<h3>Please enter your details:</h3>";
+    OUTPUT.innerHTML = "<h3>Please enter your details:</h3>";
     OUTPUT.innerHTML += "<form onsubmit='return false;'><label for='formName'>Name: </label><input type='text' id='nameField' placeholder='Eg. Fred McKenzie'></br><label for='formMoney'>Paying: $</label><input type='number' id='moneyField' placeholder='Eg. 236'></br><input type ='submit' onClick=receipt()></br></form>";
 }
 
