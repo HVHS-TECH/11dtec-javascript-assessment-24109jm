@@ -118,6 +118,12 @@ function receipt() {
     const PAID_FIELD = document.getElementById("moneyField");
     let paid = PAID_FIELD.value;
     const OUTPUT = document.getElementById("orderScreen");
+
+    if (paid < (NLMprice*NLMquantity) + (ZBprice*ZBquantity) + (OFprice*OFquantity) + (RLBprice*RLBquantity)) {
+        OUTPUT.innerHTML = "<p>You need to add at least $"+ ((NLMprice*NLMquantity) + (ZBprice*ZBquantity) + (OFprice*OFquantity) + (RLBprice*RLBquantity) - paid).toFixed(2) +" or add less to your order to continue</p>"
+        return;
+    }
+
     OUTPUT.innerHTML = "<h3>Receipt</h3><p>Order ID: #"+ orderID +"<p>Name: "+ name +"</p><p>Order Total: $"+ ((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2) +"<p>Total Paid: $"+ paid +"</p><p>Change: $"+ (((((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2)) - paid).toFixed(2)) * -1 +"</p><p>"+ messages[Number(messageNum)] +"</p>";
 }
 
@@ -154,4 +160,4 @@ function order() {
         OUTPUT.innerHTML += "<p>Total: $"+ ((NLMprice * NLMquantity) + (ZBprice * ZBquantity) + (OFprice * OFquantity) + (RLBprice * RLBquantity)).toFixed(2) +"";
         OUTPUT.innerHTML += '<button onClick="buy()">Buy</button>';
     };
-};
+}
