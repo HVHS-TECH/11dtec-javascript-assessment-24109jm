@@ -1,3 +1,4 @@
+//variables
 let NLMquantity = 0;
 let ZBquantity = 0;
 let OFquantity = 0;
@@ -7,8 +8,10 @@ let ZBprice = 9.44;
 let OFprice = 4.72;
 let RLBprice = 2.36;
 
+//arrays
 let messages = ["Have a good afternoon", "Enjoy your meal", "Bon Appetit", "Thank you for ordering from us", "We appreciate your support", "Have a great rest of your day", "Savor every bite!", "You made our day", "Come back soon!", "It's a pleasure serving you"]
 
+//const's
 const NLMminus = document.getElementById("NLMminus");
 const NLMquant = document.getElementById("NLMquant");
 const NLMplus = document.getElementById("NLMplus");
@@ -28,6 +31,7 @@ const RLBplus = document.getElementById("RLBplus");
 const orderID = Math.floor(Math.random() * 1000000000).toString().slice(1);
 const messageNum = orderID[0];
 
+//main code
 NLMminus.addEventListener("click", function() {
     if (NLMquantity > 0) {
         NLMquantity = NLMquantity - 1;
@@ -112,6 +116,7 @@ RLBquant.addEventListener("change", function() {
     } 
 });
 
+//functions
 function receipt() {
     const NAME_FIELD = document.getElementById("nameField");
     let name = NAME_FIELD.value;
